@@ -1,0 +1,6 @@
+sim_vehicle.py -v ArduCopter --map --console -L Leeds
+
+source /home/${USER}/iot-seed-drone/flight-server/pc-venv/bin/activate && gunicorn -b 127.0.0.1:5000 --worker-class eventlet -w 1 server:app
+
+/usr/bin/python /home/dronedojo/iot-seed-drone/flight-server/flight-scripts/basic_mission.py --connect 127.0.0.1:14550 --height 2 --spacing 2 --columns 3 --rows 3
+

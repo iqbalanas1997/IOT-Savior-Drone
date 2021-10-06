@@ -1,0 +1,18 @@
+#Virtual Machine
+
+~/ardupilot_ros/src/launch$ roslaunch apm.launch
+
+~/ardupilot_gazebo/build$ gazebo --verbose worlds/iris_arducopter_runway.world
+
+~$ sim_vehicle.py -f gazebo-iris -v ArduCopter --map --console
+
+#Full Linux
+
+#Launches SITL
+./startsitl.sh
+
+#Launches ROS and Gazebo Lidar Model
+roslaunch iq_sim lidar.launch
+
+#Launches MAVROS
+roslaunch iq_sim apm.launch
