@@ -11,6 +11,7 @@ import Camera from "./components/Camera";
 import AppContext from "./page-context";
 
 import MapApp from "./components/MapApp";
+import "bootstrap/dist/css/bootstrap.css";
 
 // defines a websockets instance
 const socket = io();
@@ -148,43 +149,60 @@ function App() {
 
         {/* {!flightStarted && // If the flight has not started render mission parameters page */}
         <>
-          <div className="md:grid md:grid-cols-2 items-center max-w-5xl mx-auto">
-            {/* Image showing example mission route */}
-            <div className="m-auto container max-w-lg">
-              {/*<img src={Route} alt="Example mission route" />*/}
-              <div>
+          <div className="container-fluid">
+            <div className="row">
+              <div
+                className="col-lg-6 col-md-6 col-sm-12"
+                style={{ backgroundColor: "blue", position: "relative" }}
+              >
                 <h6>Live Map</h6>
                 <MapApp />
               </div>
+
+              <div
+                className="col-lg-6 col-md-6  col-sm-12"
+                style={{ backgroundColor: "red", position: "relative" }}
+              >
+                <div>
+                  <h2 className="text-blue-500">Mission Parameters</h2>
+                  <form>
+                    <Input
+                      name="Height"
+                      onChange={(e) => setDropHeight(e.target.value)}
+                      value={dropHeight}
+                      unit="m"
+                    />
+                    <Input
+                      name="Spacing"
+                      onChange={(e) => setDropSpacing(e.target.value)}
+                      value={dropSpacing}
+                      unit="m"
+                    />
+                    <Input
+                      name="Columns"
+                      onChange={(e) => setDropColumns(e.target.value)}
+                      value={dropColumns}
+                    />
+                    <Input
+                      name="Rows"
+                      onChange={(e) => setDropRows(e.target.value)}
+                      value={dropRows}
+                    />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="">
+            {/* Image showing example mission route */}
+            <div className="">
+              <button className="btn "></button>
+              {/*<img src={Route} alt="Example mission route" />*/}
+
+              <div></div>
             </div>
             {/* Input boxes for flight parameters */}
-            <div>
-              <h2 className="text-blue-500">Mission Parameters</h2>
-              <form className="my-3 flex flex-col place-items-center text-2xl">
-                <Input
-                  name="Height"
-                  onChange={(e) => setDropHeight(e.target.value)}
-                  value={dropHeight}
-                  unit="m"
-                />
-                <Input
-                  name="Spacing"
-                  onChange={(e) => setDropSpacing(e.target.value)}
-                  value={dropSpacing}
-                  unit="m"
-                />
-                <Input
-                  name="Columns"
-                  onChange={(e) => setDropColumns(e.target.value)}
-                  value={dropColumns}
-                />
-                <Input
-                  name="Rows"
-                  onChange={(e) => setDropRows(e.target.value)}
-                  value={dropRows}
-                />
-              </form>
-            </div>
           </div>
 
           {/* Start flight button */}
